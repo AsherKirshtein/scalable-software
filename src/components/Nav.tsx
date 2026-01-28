@@ -60,6 +60,9 @@ export default function Nav() {
             <NavLink to="/faq" className={({ isActive }) => (isActive ? `${base} ${active}` : base)}>
             FAQ
             </NavLink>
+            <NavLink to="/pricing" className={({ isActive }) => (isActive ? `${base} ${active}` : base)}>
+            Pricing
+          </NavLink>
 
         </nav>
 

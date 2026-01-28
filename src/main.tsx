@@ -11,6 +11,7 @@ import Work from "./pages/Work";
 import Careers from "./pages/Careers";
 import About from "./pages/About";
 import FAQ from "./pages/FAQ";
+import Pricing from "./pages/Pricing";
 
 
 
@@ -28,6 +29,7 @@ const router = createBrowserRouter([
       { path: "careers", element: <Careers /> },
       { path: "about", element: <About /> },
       { path: "faq", element: <FAQ /> },
+      { path: "pricing", element: <Pricing /> },
 
     ],
 
