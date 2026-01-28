@@ -90,7 +90,7 @@ export default function Home() {
       </section>
 
       {/* PROOF */}
-      <section className="rounded-3xl border border-[#0B1F3B]/10 bg-[#0B1F3B]/5 p-8 sm:p-10">
+      <section className="rounded-3xl bg-[#0B1F3B]/5 p-8 sm:p-12">
         <h2 className="text-2xl font-semibold text-[#0B1F3B]">Proof beats buzzwords</h2>
         <p className="mt-2 max-w-3xl text-[#0B1F3B]/70">
           If you can describe your workflow and where it hurts, we can ship improvements quickly.
