@@ -71,10 +71,6 @@ export default function Work() {
 
         <section>
           <h2 className="text-2xl font-semibold text-[#0B1F3B]">Selected case studies</h2>
-          <p className="mt-2 max-w-2xl text-[#0B1F3B]/70">
-            Replace these with your real stories as you go. Even anonymized is fine—outcomes matter.
-          </p>
-
           <div className="mt-6 grid gap-4 sm:grid-cols-2">
             <CaseStudy
               title="Operations automation pipeline"
