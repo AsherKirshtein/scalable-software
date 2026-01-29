@@ -76,7 +76,7 @@ export default function Careers() {
       <section className="rounded-3xl border border-[#0B1F3B]/10 bg-[#0B1F3B]/5 p-8 sm:p-10">
         <h2 className="text-2xl font-semibold text-[#0B1F3B]">Want to be on the shortlist?</h2>
         <p className="mt-2 max-w-3xl text-[#0B1F3B]/70">
-          Send your GitHub/portfolio and a short note about what you build best.
+          Send your Resume, GitHub/portfolio, and a short note about what you build best.
           If a good fit comes up, we’ll reach out.
         </p>
 
