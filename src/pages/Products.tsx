@@ -3,11 +3,15 @@ function ProductCard({
   status,
   desc,
   bullets,
+  href,
+  logoSrc,
 }: {
   title: string;
   status: "Exploring" | "Drafting" | "Building";
   desc: string;
   bullets: string[];
+  href?: string;
+  logoSrc?: string; // put files in /public and use "/file.svg"
 }) {
   const badge =
     status === "Building"
@@ -17,10 +21,43 @@ function ProductCard({
   return (
     <div className="group rounded-2xl border border-[#0B1F3B]/10 bg-white p-6 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
       <div className="flex items-start justify-between gap-3">
-        <div className="text-lg font-semibold text-[#0B1F3B]">{title}</div>
-        <span className={`rounded-full px-2 py-1 text-xs font-semibold ${badge}`}>{status}</span>
+        <div className="min-w-0">
+          <div className="flex items-center gap-3">
+            {logoSrc ? (
+              <div className="flex h-9 w-9 items-center justify-center rounded-xl border border-[#0B1F3B]/10 bg-white">
+                <img
+                  src={logoSrc}
+                  alt={`${title} logo`}
+                  className="h-[22px] w-[22px] opacity-90"
+                  loading="lazy"
+                />
+              </div>
+            ) : null}
+
+            <div className="min-w-0">
+              <div className="text-lg font-semibold text-[#0B1F3B]">{title}</div>
+
+              {href ? (
+                <a
+                  href={href}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="mt-1 inline-flex items-center gap-2 text-xs font-semibold text-[#0B1F3B]/60 hover:text-[#0B1F3B]"
+                >
+                  <span className="inline-block h-1.5 w-1.5 rounded-full bg-[#E11D2E]/70" />
+                  {href.replace(/^https?:\/\//, "")}
+                </a>
+              ) : null}
+            </div>
+          </div>
+        </div>
+
+        <span className={`shrink-0 rounded-full px-2 py-1 text-xs font-semibold ${badge}`}>
+          {status}
+        </span>
       </div>
-      <p className="mt-2 text-[#0B1F3B]/70">{desc}</p>
+
+      <p className="mt-3 text-[#0B1F3B]/70">{desc}</p>
 
       <ul className="mt-4 space-y-2 text-sm text-[#0B1F3B]/70">
         {bullets.map((b) => (
@@ -53,8 +90,8 @@ export default function Products() {
           </h1>
 
           <p className="mt-3 max-w-3xl text-[#0B1F3B]/70">
-            Products come from real ops problems we see repeatedly. If you’ve got one, email it —
-            that’s our “market research.”
+            These are internal products we’re building from real ops problems we see repeatedly.
+            If you’ve got one, email it — that’s our “market research.”
           </p>
 
           <a
@@ -74,6 +111,20 @@ export default function Products() {
 
         <div className="mt-6 grid gap-4 sm:grid-cols-2">
           <ProductCard
+            title="Clear Signal"
+            status="Building"
+            href="https://clearsignalpro.com"
+            logoSrc="/clearsignal-mark.png"
+            desc="Development intelligence for originators — a clean feed of project signals, searchable by city, developer, and entity."
+            bullets={[
+              "Ingest articles into a structured feed (city, date, source, entities)",
+              "Filters + search + saved views for quick weekly scans",
+              "Designed to scale: dedupe + backend search as volume grows",
+              "Fast navigation from dashboard → detail pages",
+            ]}
+          />
+
+          <ProductCard
             title="Lease Deadline Tracker"
             status="Exploring"
             desc="Extract key dates + escalation clauses from leases and notify before money is missed."
@@ -84,6 +135,7 @@ export default function Products() {
               "Searchable clause library",
             ]}
           />
+
           <ProductCard
             title="Ops Automation Kits"
             status="Drafting"
