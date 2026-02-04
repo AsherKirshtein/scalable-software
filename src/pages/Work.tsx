@@ -5,6 +5,7 @@ function CaseStudy({
   tags,
   href,
   featured = false,
+  logoSrc,
 }: {
   title: string;
   outcome: string;
@@ -12,6 +13,7 @@ function CaseStudy({
   tags: string[];
   href?: string;
   featured?: boolean;
+  logoSrc?: string; // e.g. "/clearsignal-mark.svg"
 }) {
   const Card = (
     <div
@@ -23,13 +25,26 @@ function CaseStudy({
       <div className="flex items-start justify-between gap-3">
         <div className="min-w-0">
           <div className="flex flex-wrap items-center gap-2">
+            {logoSrc ? (
+              <span className="mr-1 inline-flex h-9 w-9 items-center justify-center rounded-xl border border-[#0B1F3B]/10 bg-white align-middle">
+                <img
+                  src={logoSrc}
+                  alt={`${title} logo`}
+                  className="h-[22px] w-[22px] opacity-90"
+                  loading="lazy"
+                />
+              </span>
+            ) : null}
+
             <div className="text-lg font-semibold text-[#0B1F3B]">{title}</div>
+
             {featured ? (
               <span className="rounded-full border border-[#E11D2E]/20 bg-[#E11D2E]/10 px-2 py-0.5 text-[11px] font-semibold text-[#E11D2E]">
                 Featured
               </span>
             ) : null}
           </div>
+
           <div className="mt-2 text-[#0B1F3B]/70">{outcome}</div>
         </div>
 
@@ -65,13 +80,14 @@ function CaseStudy({
       href={href}
       target="_blank"
       rel="noreferrer"
-      className="block focus:outline-none focus-visible:ring-2 focus-visible:ring-[#E11D2E]/40 rounded-2xl"
+      className="block rounded-2xl focus:outline-none focus-visible:ring-2 focus-visible:ring-[#E11D2E]/40"
       aria-label={`${title} (opens in new tab)`}
     >
       {Card}
     </a>
   );
 }
+
 
 export default function Work() {
   return (
@@ -116,6 +132,7 @@ export default function Work() {
         <div className="mt-6 grid gap-4 sm:grid-cols-2">
           <CaseStudy
             featured
+            logoSrc="/clearsignal-mark.png"
             title="Clear Signal — development intelligence feed"
             outcome="Built an originator-focused app that aggregates development news into a searchable feed with saved views and fast navigation."
             bullets={[
@@ -123,7 +140,7 @@ export default function Work() {
               "Shipped Dashboard + detail pages with filters (city/type/query) and saved searches",
               "Designed for scale: backend-first search/filtering plan + dedupe on ingest to keep the dataset clean",
             ]}
-            tags={["Product build", "Data ingestion", "Search & filters", "Next.js"]}
+            tags={["Product build", "Data ingestion", "Search & filters", "Vite + React"]} // (also fix this, you're not Next.js)
             href="https://clearsignalpro.com"
           />
 
